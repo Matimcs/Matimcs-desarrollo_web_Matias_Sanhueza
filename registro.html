@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de voluntario - Avistamientos de Aves</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Registro de Avistamientos de Aves</h1>
+    <p>Unión de Ornitólogos de Chile</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a class="activo" href="registro.html">Registrar voluntario</a></li>
+        <li><a href="avistamiento.html">Informar avistamiento</a></li>
+        <li><a href="listado.html">Ver avistamientos</a></li>
+        <li><a href="metricas.html">Indicadores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Registro de voluntario(a)</h2>
+    <p>Complete el siguiente formulario para inscribirse.</p>
+
+    <p id="aviso" class="aviso-exito" hidden></p>
+
+    <form id="form-registro" novalidate>
+      <fieldset>
+        <legend>Datos personales</legend>
+
+        <label for="nombre">Nombres</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Camila Andrea">
+        <p class="mensaje-error" id="error-nombre"></p>
+
+        <label for="apellido">Apellidos</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Ej: Rojas Díaz">
+        <p class="mensaje-error" id="error-apellido"></p>
+
+        <label for="rut">RUT</label>
+        <input type="text" id="rut" name="rut" placeholder="12345678-9">
+        <p class="mensaje-error" id="error-rut"></p>
+
+        <label for="nacimiento">Fecha de nacimiento <span class="opcional">(opcional)</span></label>
+        <input type="date" id="nacimiento" name="nacimiento">
+        <p class="mensaje-error" id="error-nacimiento"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contacto</legend>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="nombre@correo.cl">
+        <p class="mensaje-error" id="error-email"></p>
+
+        <label for="celular">Celular</label>
+        <input type="tel" id="celular" name="celular" placeholder="+56 9 1234 5678">
+        <p class="mensaje-error" id="error-celular"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dirección postal</legend>
+
+        <label for="region">Región</label>
+        <select id="region" name="region">
+          <option value="">Seleccione región</option>
+        </select>
+        <p class="mensaje-error" id="error-region"></p>
+
+        <label for="comuna">Comuna</label>
+        <select id="comuna" name="comuna">
+          <option value="">Seleccione comuna</option>
+        </select>
+        <p class="mensaje-error" id="error-comuna"></p>
+
+        <label for="calle">Calle y número <span class="opcional">(opcional)</span></label>
+        <input type="text" id="calle" name="calle" placeholder="Av. Siempre Viva 742">
+        <p class="mensaje-error" id="error-calle"></p>
+      </fieldset>
+
+      <div class="botones">
+        <button type="submit">Registrarme</button>
+        <button type="reset" class="secundario">Limpiar</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="js/datos-chile.js"></script>
+  <script src="js/registro.js"></script>
+</body>
+</html>

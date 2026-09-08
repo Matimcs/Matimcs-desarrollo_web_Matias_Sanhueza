@@ -1,0 +1,225 @@
+/* Estilos del sistema de avistamientos - Tarea 1 */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: #222;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #35682d;
+  color: white;
+  padding: 15px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+header p {
+  margin: 4px 0 0 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 4px 8px;
+}
+
+nav a.activo {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+h2 {
+  color: #35682d;
+}
+
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  padding: 20px;
+}
+
+/* Formularios */
+form {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+}
+
+fieldset {
+  margin-bottom: 15px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+.opcional {
+  font-weight: normal;
+  color: #888;
+  font-size: 12px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #aaa;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input.campo-error,
+select.campo-error,
+textarea.campo-error {
+  border: 1px solid red;
+}
+
+.mensaje-error {
+  color: red;
+  font-size: 12px;
+  margin: 2px 0 0 0;
+  min-height: 14px;
+}
+
+.botones {
+  margin-top: 15px;
+}
+
+button {
+  background-color: #35682d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button.secundario {
+  background-color: #888;
+}
+
+.aviso-exito {
+  background-color: #dff0d8;
+  border: 1px solid #a9cfa0;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* Listado */
+.barra-filtros {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.barra-filtros label {
+  margin-top: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background-color: #e6ede4;
+}
+
+.paginacion {
+  margin-top: 12px;
+}
+
+.paginacion button {
+  padding: 5px 9px;
+  margin-right: 3px;
+}
+
+.paginacion button.pagina-activa {
+  background-color: #1f3d1a;
+}
+
+.paginacion button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+/* Metricas */
+.tarjeta {
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 12px 20px;
+  margin: 0 8px 12px 0;
+  text-align: center;
+}
+
+.tarjeta .numero {
+  font-size: 28px;
+  font-weight: bold;
+  color: #35682d;
+}
+
+.grafico {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.barra-fila {
+  margin: 5px 0;
+}
+
+.barra-fila .etiqueta {
+  display: inline-block;
+  width: 160px;
+  font-size: 13px;
+}
+
+.barra-fila .relleno {
+  display: inline-block;
+  background-color: #6aa15f;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  vertical-align: middle;
+}

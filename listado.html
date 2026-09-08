@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avistamientos reportados - Avistamientos de Aves</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Registro de Avistamientos de Aves</h1>
+    <p>Unión de Ornitólogos de Chile</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="registro.html">Registrar voluntario</a></li>
+        <li><a href="avistamiento.html">Informar avistamiento</a></li>
+        <li><a class="activo" href="listado.html">Ver avistamientos</a></li>
+        <li><a href="metricas.html">Indicadores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Avistamientos reportados</h2>
+    <p>Puede filtrar por tipo de ave y ordenar la lista. Los resultados se muestran por páginas.</p>
+
+    <div class="barra-filtros">
+      <label for="filtro-tipo">Filtrar por tipo de ave</label>
+      <select id="filtro-tipo">
+        <option value="">Todos</option>
+      </select>
+
+      <label for="orden">Ordenar por</label>
+      <select id="orden">
+        <option value="fecha-desc">Fecha (más reciente)</option>
+        <option value="fecha-asc">Fecha (más antigua)</option>
+        <option value="lugar-asc">Lugar (A-Z)</option>
+        <option value="lugar-desc">Lugar (Z-A)</option>
+      </select>
+    </div>
+
+    <table>
+      <caption id="resumen"></caption>
+      <thead>
+        <tr>
+          <th>Ave</th>
+          <th>Tipo</th>
+          <th>Lugar</th>
+          <th>Región</th>
+          <th>Fecha y hora</th>
+          <th>Voluntario</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpo-tabla"></tbody>
+    </table>
+
+    <div class="paginacion" id="paginacion"></div>
+  </main>
+
+  <script src="js/datos-aves.js"></script>
+  <script src="js/listado.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informar avistamiento - Avistamientos de Aves</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Registro de Avistamientos de Aves</h1>
+    <p>Unión de Ornitólogos de Chile</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="registro.html">Registrar voluntario</a></li>
+        <li><a class="activo" href="avistamiento.html">Informar avistamiento</a></li>
+        <li><a href="listado.html">Ver avistamientos</a></li>
+        <li><a href="metricas.html">Indicadores</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Informar un avistamiento</h2>
+    <p>
+      Solo los voluntarios registrados pueden informar avistamientos. Indique su correo de
+      voluntario y los datos de la observación. Es obligatorio adjuntar al menos una foto o
+      video como respaldo.
+    </p>
+
+    <p id="aviso" class="aviso-exito" hidden></p>
+
+    <form id="form-avistamiento" novalidate>
+      <fieldset>
+        <legend>Voluntario</legend>
+
+        <label for="email">Correo del voluntario registrado</label>
+        <input type="email" id="email" name="email" placeholder="nombre@correo.cl">
+        <p class="mensaje-error" id="error-email"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ave observada</legend>
+
+        <label for="tipo">Tipo de ave</label>
+        <select id="tipo" name="tipo">
+          <option value="">Seleccione tipo</option>
+        </select>
+        <p class="mensaje-error" id="error-tipo"></p>
+
+        <label for="nombre">Nombre del ave</label>
+        <input type="text" id="nombre" name="nombre" list="lista-aves" placeholder="Ej: Cóndor andino">
+        <datalist id="lista-aves"></datalist>
+        <p class="mensaje-error" id="error-nombre"></p>
+
+        <label for="cantidad">Cantidad de ejemplares <span class="opcional">(opcional)</span></label>
+        <input type="number" id="cantidad" name="cantidad" min="1" max="1000" placeholder="1">
+        <p class="mensaje-error" id="error-cantidad"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lugar y fecha</legend>
+
+        <label for="region">Región</label>
+        <select id="region" name="region">
+          <option value="">Seleccione región</option>
+        </select>
+        <p class="mensaje-error" id="error-region"></p>
+
+        <label for="comuna">Comuna</label>
+        <select id="comuna" name="comuna">
+          <option value="">Seleccione comuna</option>
+        </select>
+        <p class="mensaje-error" id="error-comuna"></p>
+
+        <label for="lugar">Lugar del avistamiento</label>
+        <input type="text" id="lugar" name="lugar" placeholder="Ej: Humedal Batuco">
+        <p class="mensaje-error" id="error-lugar"></p>
+
+        <label for="fecha">Fecha y hora del avistamiento</label>
+        <input type="datetime-local" id="fecha" name="fecha">
+        <p class="mensaje-error" id="error-fecha"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Respaldo</legend>
+
+        <label for="archivo">Foto o video (obligatorio, al menos uno)</label>
+        <input type="file" id="archivo" name="archivo" accept="image/*,video/*" multiple>
+        <p class="mensaje-error" id="error-archivo"></p>
+
+        <label for="comentario">Comentario <span class="opcional">(opcional)</span></label>
+        <textarea id="comentario" name="comentario" rows="3"></textarea>
+      </fieldset>
+
+      <div class="botones">
+        <button type="submit">Enviar avistamiento</button>
+        <button type="reset" class="secundario">Limpiar</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="js/datos-chile.js"></script>
+  <script src="js/datos-aves.js"></script>
+  <script src="js/avistamiento.js"></script>
+</body>
+</html>
