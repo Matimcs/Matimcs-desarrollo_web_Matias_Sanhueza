@@ -4,7 +4,7 @@ Prototipo del sistema de la Unión de Ornitólogos de Chile para el curso CC5002
 Está hecho solo con HTML, CSS y JavaScript, no usa servidor ni guarda datos.
 Para probarlo basta abrir `index.html` en el navegador.
 
-## Páginas
+# Páginas
 
 - `index.html`: inicio y navegación.
 - `registro.html`: registro de voluntario(a).
@@ -12,14 +12,14 @@ Para probarlo basta abrir `index.html` en el navegador.
 - `listado.html`: listado de avistamientos con filtro, orden y paginación.
 - `metricas.html`: indicadores y gráficos.
 
-## Estructura
+# Estructura
 
 - `css/estilos.css`: estilos compartidos por todas las páginas.
 - `js/datos-chile.js`: regiones y comunas de Chile para los `select` dependientes.
 - `js/datos-aves.js`: datos de ejemplo (tipos de ave, avistamientos y voluntarios).
 - `js/registro.js`, `js/avistamiento.js`, `js/listado.js`, `js/metricas.js`: lógica de cada página.
 
-## Decisiones que conviene tener en cuenta para la corrección
+# Decisioness que conviene tener en cuenta para la corrección
 
 - **Todas las validaciones están en JavaScript.** Los formularios usan `novalidate`,
   así que el atributo `required` de HTML no interviene. Cada campo muestra su propio
@@ -39,3 +39,6 @@ Para probarlo basta abrir `index.html` en el navegador.
 - **Gráficos:** se dibujan con barras en HTML/CSS para no depender de librerías externas.
 
 Probado en Chrome y Firefox, y en distintos tamaños de pantalla.
+
+Parte de la estructura y de las validaciones las reutilicé de un proyecto que hice
+para el ramo Ingeniería de Software CC4401-1.
