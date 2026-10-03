@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Avistamientos de Aves{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Registro de Avistamientos de Aves</h1>
+    <p>Unión de Ornitólogos de Chile</p>
+    <nav>
+      <ul>
+        <li><a class="{% if request.endpoint == 'inicio' %}activo{% endif %}" href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li><a class="{% if request.endpoint == 'registro' %}activo{% endif %}" href="{{ url_for('registro') }}">Registrar voluntario</a></li>
+        <li><a class="{% if request.endpoint == 'avistamiento' %}activo{% endif %}" href="{{ url_for('avistamiento') }}">Informar avistamiento</a></li>
+        <li><a class="{% if request.endpoint == 'listado' or request.endpoint == 'detalle' %}activo{% endif %}" href="{{ url_for('listado') }}">Ver avistamientos</a></li>
+        <li><a class="{% if request.endpoint == 'estadisticas' %}activo{% endif %}" href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% with mensajes = get_flashed_messages() %}
+      {% if mensajes %}
+        {% for m in mensajes %}
+        <p class="aviso-exito">{{ m }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block contenido %}{% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

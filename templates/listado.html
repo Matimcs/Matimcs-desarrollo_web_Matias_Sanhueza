@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Avistamientos reportados - Avistamientos de Aves{% endblock %}
+
+{% block contenido %}
+<h2>Avistamientos reportados</h2>
+<p>Haga clic sobre una fila para ver el detalle del avistamiento.</p>
+
+{% if avistamientos %}
+<table>
+  <caption>Mostrando {{ avistamientos|length }} de {{ total }} avistamientos - página {{ pagina }} de {{ total_paginas }}</caption>
+  <thead>
+    <tr>
+      <th>Ave</th>
+      <th>Lugar</th>
+      <th>Fecha y hora</th>
+      <th>Voluntario</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in avistamientos %}
+    <tr onclick="location.href='{{ url_for('detalle', avistamiento_id=a.id) }}'">
+      <td>{{ a.ave }}</td>
+      <td>{{ a.lugar }}</td>
+      <td>{{ a.fecha_hora.strftime('%d-%m-%Y %H:%M') }}</td>
+      <td>{{ a.voluntario }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="paginacion">
+  {% if pagina > 1 %}
+  <a href="{{ url_for('listado', pagina=pagina - 1) }}">« Anterior</a>
+  {% endif %}
+  <span>Página {{ pagina }} de {{ total_paginas }}</span>
+  {% if pagina < total_paginas %}
+  <a href="{{ url_for('listado', pagina=pagina + 1) }}">Siguiente »</a>
+  {% endif %}
+</div>
+{% else %}
+<p>Todavía no hay avistamientos registrados.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block titulo %}Registrar voluntario - Avistamientos de Aves{% endblock %}
+
+{% block contenido %}
+<h2>Registro de voluntario(a)</h2>
+
+{% if exito %}
+<p class="aviso-exito">Voluntario(a) {{ nombre }} registrado(a) correctamente.</p>
+<p>¿Desea informar un avistamiento ahora?</p>
+<p>
+  <a href="{{ url_for('avistamiento', voluntario=voluntario_id) }}">Registrar un avistamiento</a>
+  o
+  <a href="{{ url_for('inicio') }}">volver al inicio</a>.
+</p>
+{% else %}
+
+<p>Complete el siguiente formulario para inscribirse.</p>
+
+{% if errores.get('general') %}
+<p class="mensaje-error">{{ errores.get('general') }}</p>
+{% endif %}
+
+<form id="form-registro" method="post" action="{{ url_for('registro') }}" novalidate>
+  <fieldset>
+    <legend>Datos personales</legend>
+
+    <label for="nombre">Nombres</label>
+    <input type="text" id="nombre" name="nombre" value="{{ valores.get('nombre', '') }}"
+      class="{% if errores.get('nombre') %}campo-error{% endif %}" placeholder="Ej: Camila Andrea">
+    <p class="mensaje-error" id="error-nombre">{{ errores.get('nombre', '') }}</p>
+
+    <label for="apellido">Apellidos</label>
+    <input type="text" id="apellido" name="apellido" value="{{ valores.get('apellido', '') }}"
+      class="{% if errores.get('apellido') %}campo-error{% endif %}" placeholder="Ej: Rojas Díaz">
+    <p class="mensaje-error" id="error-apellido">{{ errores.get('apellido', '') }}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contacto</legend>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" value="{{ valores.get('email', '') }}"
+      class="{% if errores.get('email') %}campo-error{% endif %}" placeholder="nombre@correo.cl">
+    <p class="mensaje-error" id="error-email">{{ errores.get('email', '') }}</p>
+
+    <label for="celular">Celular</label>
+    <input type="tel" id="celular" name="celular" value="{{ valores.get('celular', '') }}"
+      class="{% if errores.get('celular') %}campo-error{% endif %}" placeholder="+56 9 1234 5678">
+    <p class="mensaje-error" id="error-celular">{{ errores.get('celular', '') }}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Dirección postal</legend>
+
+    <label for="region">Región</label>
+    <select id="region" name="region" class="{% if errores.get('region') %}campo-error{% endif %}">
+      <option value="">Seleccione región</option>
+      {% for r in regiones %}
+      <option value="{{ r.id }}" {% if valores.get('region') == r.id|string %}selected{% endif %}>{{ r.nombre }}</option>
+      {% endfor %}
+    </select>
+    <p class="mensaje-error" id="error-region">{{ errores.get('region', '') }}</p>
+
+    <label for="comuna">Comuna</label>
+    <select id="comuna" name="comuna" class="{% if errores.get('comuna') %}campo-error{% endif %}">
+      <option value="">Seleccione comuna</option>
+    </select>
+    <p class="mensaje-error" id="error-comuna">{{ errores.get('comuna', '') }}</p>
+  </fieldset>
+
+  <div class="botones">
+    <button type="submit">Registrarme</button>
+    <button type="reset" class="secundario">Limpiar</button>
+  </div>
+</form>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  var REGIONES = {{ regiones | tojson }};
+  var COMUNA_SELECCIONADA = "{{ valores.get('comuna', '') }}";
+</script>
+<script src="{{ url_for('static', filename='js/comunas.js') }}"></script>
+<script src="{{ url_for('static', filename='js/registro.js') }}"></script>
+{% endblock %}

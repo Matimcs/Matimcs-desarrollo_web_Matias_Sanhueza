@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Inicio - Avistamientos de Aves{% endblock %}
+
+{% block contenido %}
+<h2>Bienvenido(a)</h2>
+<p>
+  Este sistema permite a personas voluntarias colaborar con el monitoreo de las aves
+  de Chile. Puede registrarse como voluntario(a), informar un avistamiento y revisar
+  los avistamientos reportados por la comunidad.
+</p>
+
+<ul>
+  <li><a href="{{ url_for('registro') }}">Registrar voluntario</a></li>
+  <li><a href="{{ url_for('avistamiento') }}">Informar avistamiento</a></li>
+  <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
+</ul>
+
+<h2>Últimos avistamientos</h2>
+{% if ultimos %}
+<table>
+  <thead>
+    <tr>
+      <th>Ave</th>
+      <th>Lugar</th>
+      <th>Fecha y hora</th>
+      <th>Voluntario</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in ultimos %}
+    <tr onclick="location.href='{{ url_for('detalle', avistamiento_id=a.id) }}'">
+      <td>{{ a.ave }}</td>
+      <td>{{ a.lugar }}</td>
+      <td>{{ a.fecha_hora.strftime('%d-%m-%Y %H:%M') }}</td>
+      <td>{{ a.voluntario }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Todavía no hay avistamientos registrados.</p>
+{% endif %}
+{% endblock %}

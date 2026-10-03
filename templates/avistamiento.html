@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block titulo %}Informar avistamiento - Avistamientos de Aves{% endblock %}
+
+{% block contenido %}
+<h2>Informar un avistamiento</h2>
+<p>Complete los datos del avistamiento. Es obligatorio adjuntar al menos una foto o video.</p>
+
+{% if errores.get('general') %}
+<p class="mensaje-error">{{ errores.get('general') }}</p>
+{% endif %}
+
+{% if voluntarios %}
+<form id="form-avistamiento" method="post" action="{{ url_for('avistamiento') }}"
+  enctype="multipart/form-data" novalidate>
+  <fieldset>
+    <legend>Voluntario</legend>
+
+    <label for="voluntario">Voluntario que reporta</label>
+    <select id="voluntario" name="voluntario" class="{% if errores.get('voluntario') %}campo-error{% endif %}">
+      <option value="">Seleccione voluntario</option>
+      {% for v in voluntarios %}
+      <option value="{{ v.id }}"
+        {% if valores.get('voluntario') == v.id|string or preseleccion == v.id %}selected{% endif %}>
+        {{ v.nombre }} ({{ v.email }})
+      </option>
+      {% endfor %}
+    </select>
+    <p class="mensaje-error" id="error-voluntario">{{ errores.get('voluntario', '') }}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ave observada</legend>
+
+    <label for="ave">Nombre del ave</label>
+    <select id="ave" name="ave" class="{% if errores.get('ave') %}campo-error{% endif %}">
+      <option value="">Seleccione ave</option>
+      {% for a in aves %}
+      <option value="{{ a.id }}" {% if valores.get('ave') == a.id|string %}selected{% endif %}>{{ a.nombre }}</option>
+      {% endfor %}
+    </select>
+    <p class="mensaje-error" id="error-ave">{{ errores.get('ave', '') }}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Lugar y fecha</legend>
+
+    <label for="lugar">Lugar del avistamiento</label>
+    <input type="text" id="lugar" name="lugar" value="{{ valores.get('lugar', '') }}"
+      class="{% if errores.get('lugar') %}campo-error{% endif %}" placeholder="Ej: Humedal Batuco">
+    <p class="mensaje-error" id="error-lugar">{{ errores.get('lugar', '') }}</p>
+
+    <label for="fecha">Fecha y hora del avistamiento</label>
+    <input type="datetime-local" id="fecha" name="fecha" value="{{ valores.get('fecha', '') }}"
+      class="{% if errores.get('fecha') %}campo-error{% endif %}">
+    <p class="mensaje-error" id="error-fecha">{{ errores.get('fecha', '') }}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Respaldo</legend>
+
+    <label for="archivos">Foto o video (obligatorio, al menos uno)</label>
+    <input type="file" id="archivos" name="archivos" accept="image/*,video/*" multiple
+      class="{% if errores.get('archivos') %}campo-error{% endif %}">
+    <p class="mensaje-error" id="error-archivos">{{ errores.get('archivos', '') }}</p>
+
+    <label for="descripcion">Descripción <span class="opcional">(opcional)</span></label>
+    <textarea id="descripcion" name="descripcion" rows="3">{{ valores.get('descripcion', '') }}</textarea>
+  </fieldset>
+
+  <div class="botones">
+    <button type="submit">Enviar avistamiento</button>
+    <button type="reset" class="secundario">Limpiar</button>
+  </div>
+</form>
+{% else %}
+<p>Primero debe haber al menos un voluntario registrado.
+  <a href="{{ url_for('registro') }}">Registrar voluntario</a>.</p>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/avistamiento.js') }}"></script>
+{% endblock %}
