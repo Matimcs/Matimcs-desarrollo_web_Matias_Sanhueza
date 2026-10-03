@@ -4,9 +4,8 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 
-# Credenciales pedidas en el enunciado. Dejo la cadena de conexion en una
-# variable de entorno para poder probar la aplicacion con otra base de datos
-# sin tocar el codigo, pero por defecto apunta a la base "tarea2" en MySQL.
+# Datos de conexion a MySQL (los del enunciado). Lo dejo tambien como variable
+# de entorno por si necesito apuntar a otra base para probar.
 DB_USERNAME = "cc5002"
 DB_PASSWORD = "programacionweb"
 DB_HOST = "localhost"
@@ -24,7 +23,7 @@ Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
 
-# --- Modelos (siguen las tablas de tarea2.sql) ---
+# Modelos, uno por cada tabla de tarea2.sql
 
 class Region(Base):
     __tablename__ = "region"
@@ -91,7 +90,7 @@ class Registro(Base):
     avistamiento = relationship("Avistamiento", back_populates="registros")
 
 
-# --- Funciones de consulta ---
+# Consultas e inserciones que usa la aplicacion
 
 def get_regiones():
     session = Session()

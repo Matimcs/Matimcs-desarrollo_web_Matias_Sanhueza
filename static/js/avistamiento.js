@@ -1,5 +1,5 @@
-// Validaciones del formulario de avistamiento en el navegador. Mismas reglas
-// que en la Tarea 1. Si todo está bien, se envía al servidor.
+// Validaciones del avistamiento en el navegador (mismas reglas de la Tarea 1).
+// Si todo está bien el formulario se envía al servidor.
 
 document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("form-avistamiento");

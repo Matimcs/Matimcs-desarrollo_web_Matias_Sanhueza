@@ -1,5 +1,5 @@
-// Arma el select de comunas a partir de la región elegida. Los datos vienen
-// desde la base de datos, embebidos por el servidor en la variable REGIONES.
+// Arma el select de comunas según la región elegida. Las regiones y comunas
+// vienen de la base de datos, el servidor las deja en la variable REGIONES.
 
 function construirComunas(regionId, comunaSeleccionada) {
   var selComuna = document.getElementById("comuna");

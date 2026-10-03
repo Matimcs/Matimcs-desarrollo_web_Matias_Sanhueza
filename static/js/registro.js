@@ -1,6 +1,5 @@
-// Validaciones del registro de voluntarios en el navegador. Son las mismas
-// reglas de la Tarea 1. Si algo falla se corta el envío y se muestran los
-// mensajes; si todo está bien, el formulario se envía al servidor (Flask).
+// Validaciones del registro en el navegador (mismas reglas de la Tarea 1).
+// Si algo falla no se manda el formulario, si está todo bien se envía a Flask.
 
 document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("form-registro");
