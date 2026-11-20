@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buscador - Avistamientos de Aves</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Registro de Avistamientos de Aves</h1>
+    <p>Unión de Ornitólogos de Chile</p>
+  </header>
+
+  <main>
+    <h2>Buscador de avistamientos</h2>
+    <p>Busque por nombre del ave, del voluntario o de la comuna.</p>
+
+    <form id="form-buscar">
+      <label for="texto">Buscar</label>
+      <input type="text" id="texto" name="texto" autocomplete="off" placeholder="Ej: cóndor, Camila, Ñuñoa">
+    </form>
+
+    <p id="mensaje"></p>
+
+    <table id="tabla" hidden>
+      <thead>
+        <tr>
+          <th>Voluntario</th>
+          <th>Día</th>
+          <th>Ave</th>
+          <th>Comuna</th>
+          <th>Nota</th>
+          <th>Evaluar</th>
+        </tr>
+      </thead>
+      <tbody id="resultados"></tbody>
+    </table>
+  </main>
+
+  <script src="js/buscador.js"></script>
+</body>
+</html>
